@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Fishing Spot</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/fishingspots" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" for="text" id="title" name="fishingspot[title]" required></input>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Locations</label>
+                    <input class="form-control" for="text" id="locations" name="fishingspot[location]" required></input>
+                </div>
+                <div class="mb-2">
+                    <label for="imageUpload">Add images</label>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="imageUpload" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" for="text" id="description" name="fishingspot[description]"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Fishing Spot</button>
+                </div>
+            </form>
+            <a href="/fishingspots">All Fishing Spots</a>
+        </div>
+    </div>

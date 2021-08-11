@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Fishing Spot</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/fishingspots/<%= fishingspot._id %>?_method=PUT" method="POST" novalidate
+                class="validated-form" enctype="multipart/form-data"> required
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" for="text" id="title" name="fishingspot[title]"
+                        value="<%= fishingspot.title %> " required></input>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Locations</label>
+                    <input class="form-control" for="text" id="locations" name="fishingspot[location]"
+                        value="<%= fishingspot.location %> " required></input>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <label for="imageUpload">Add images</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="imageUpload" name="image" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" rows="4" for="text" id="description"
+                            name="fishingspot[description]" required><%= fishingspot.description %> </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <% fishingspot.images.forEach(function(img,i) { %>
+                            <img src="<%= img.thumbnail%>" class="img-thumbnail" alt="">
+                            <div class="form-check-inline">
+                                <input type="checkbox" id="image-<%= i %>" name="deleteImages[]"
+                                    value="<%= img.filename %>">
+                            </div>
+                            <label for="image-<%= i %>">Delete</label>
+                            <% }) %>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-info">Update Fishing Spot</button>
+                    </div>
+            </form>
+            <a href="/fishingspots/<%= fishingspot._id %>">Back to Fishing Spot</a>
+        </div>
+    </div>
